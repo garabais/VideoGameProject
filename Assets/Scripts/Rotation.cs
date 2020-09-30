@@ -22,7 +22,8 @@ public class Rotation : MonoBehaviour
 		float angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
 
 		//Ta Daaa
-		transform.rotation =  Quaternion.Euler (new Vector3(0f,-1 * angle, 0f)); }
+		transform.rotation =  Quaternion.Euler (new Vector3(0f,-1 * angle, 0f));
+	}
 
      float AngleBetweenTwoPoints(Vector3 a, Vector3 b) {
          return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;

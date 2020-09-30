@@ -17,10 +17,6 @@ public class Attack : MonoBehaviour
 		}
 	}
 
-	private void OnTriggerEnter(Collider other) {
-		transform.position = new Vector3(0,0,0);
-	}
-
 	void SetLayerRecursively(GameObject obj, int newLayer)
     {
         if (null == obj)

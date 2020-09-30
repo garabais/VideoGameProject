@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyShoot : MonoBehaviour
 {
 	public GameObject gun;
-	public GameObject enemy;
 	public Transform place;
 	public float delay  = 0.5f;
 	public float speed = 5;
@@ -19,7 +18,6 @@ public class EnemyShoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		// transform.LookAt(enemy.transform);
     }
 
 	public IEnumerator Shoot() {
