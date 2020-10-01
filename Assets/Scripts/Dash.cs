@@ -45,7 +45,8 @@ public class Dash : MonoBehaviour
 	// In linux there's a bug that in editor mode spacebar is detected as an O
 	// This kinda solves this issue
 	public static KeyCode SpacebarKey() {
-	if (Application.isEditor) return KeyCode.O;
+
+	if (Application.platform == RuntimePlatform.LinuxEditor) return KeyCode.O;
 	else return KeyCode.Space;
 	}
 }
