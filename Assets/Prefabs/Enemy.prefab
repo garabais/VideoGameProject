@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 7536451653806748083}
   - component: {fileID: 8346992346080330930}
   - component: {fileID: -1925670223596806248}
+  - component: {fileID: 6492829563128218716}
   m_Layer: 10
   m_Name: Enemy
   m_TagString: Untagged
@@ -167,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gun: {fileID: 4657588713161776180, guid: a0b1074b1a4903f8fae12fbd1ad7a308, type: 3}
   place: {fileID: 6807960632683105792}
-  delay: 0.5
+  delay: 1
   speed: 5
 --- !u!114 &-1925670223596806248
 MonoBehaviour:
@@ -181,7 +182,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ee30e9dafea730f2996dd1677a221aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 2924193420960173078, guid: 838add8ea64601caa9aa6a3e9f796b86, type: 3}
+--- !u!114 &6492829563128218716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103941778587062439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad743f833324ef4c9ada9868bad159e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  d: 0.01
 --- !u!1 &5127893087109190013
 GameObject:
   m_ObjectHideFlags: 0
