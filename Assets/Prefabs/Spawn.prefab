@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5351381742140973233}
   - component: {fileID: 4788438400706943959}
+  - component: {fileID: 8627834576748000932}
   m_Layer: 0
   m_Name: Spawn
   m_TagString: Untagged
@@ -45,4 +46,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 4103941778587062439, guid: 4c1825f11a7b8992389cb56a07640af7, type: 3}
   number: 5
-  delay: 3
+  delay: 5
+--- !u!114 &8627834576748000932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9083808625240213257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f1bd4ae69e56884a9923719c1562c7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
