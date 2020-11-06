@@ -804,7 +804,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1208548910}
   m_Layer: 0
-  m_Name: Ruta
+  m_Name: PATH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -818,8 +818,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208548909}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.110266834, y: 0, z: 3.7808294}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -3.3, y: 0, z: 4.6}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 461444496}
   - {fileID: 526738225}
@@ -1058,7 +1058,7 @@ PrefabInstance:
     - target: {fileID: 5351381742140973233, guid: 19e4730f8af8d369d9675b94e240e80a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.63
+      value: -12.64
       objectReference: {fileID: 0}
     - target: {fileID: 5351381742140973233, guid: 19e4730f8af8d369d9675b94e240e80a,
         type: 3}
@@ -1068,7 +1068,7 @@ PrefabInstance:
     - target: {fileID: 5351381742140973233, guid: 19e4730f8af8d369d9675b94e240e80a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.24
+      value: 9.05
       objectReference: {fileID: 0}
     - target: {fileID: 5351381742140973233, guid: 19e4730f8af8d369d9675b94e240e80a,
         type: 3}

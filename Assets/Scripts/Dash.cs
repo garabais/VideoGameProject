@@ -23,7 +23,7 @@ public class Dash : MonoBehaviour
     void Update()
     {
 		if(dashTimeout <= crDash) {
-			if(Input.GetKeyDown(SpacebarKey())) {
+			if(Input.GetKeyDown(KeyCode.Space)) {
 				crDash = 0;
 				dash = true;
 			}
@@ -42,11 +42,4 @@ public class Dash : MonoBehaviour
 		}
     }
 
-	// In linux there's a bug that in editor mode spacebar is detected as an O
-	// This kinda solves this issue
-	public static KeyCode SpacebarKey() {
-
-	if (Application.platform == RuntimePlatform.LinuxEditor) return KeyCode.O;
-	else return KeyCode.Space;
-	}
 }

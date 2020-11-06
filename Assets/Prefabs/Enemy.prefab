@@ -169,7 +169,6 @@ MonoBehaviour:
   gun: {fileID: 4657588713161776180, guid: a0b1074b1a4903f8fae12fbd1ad7a308, type: 3}
   place: {fileID: 6807960632683105792}
   delay: 1
-  speed: 5
 --- !u!114 &-1925670223596806248
 MonoBehaviour:
   m_ObjectHideFlags: 0

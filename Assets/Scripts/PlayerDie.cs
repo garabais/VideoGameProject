@@ -17,6 +17,7 @@ public class PlayerDie : MonoBehaviour
     }
 
 	private void OnTriggerEnter(Collider other) {
-		transform.position = new Vector3(0,0,0);
+		// transform.position = new Vector3(0,0.5f,0);
+		print("DIE");
 	}
 }
