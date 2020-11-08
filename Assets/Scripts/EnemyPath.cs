@@ -8,22 +8,25 @@ public class EnemyPath : MonoBehaviour
     /*
     public Node[] path;
     private int actual;
-    
+
     private bool going;
-    
+
     */
 
     private Node prev;
-    public float speed = .5f; 
-    public float d = 0.01f;
+    public float speed = .5f;
+    public float d = 0.15f;
+
+	public Vector3 dir;
 
     private Node current;
+	private Coroutine dCheck;
     // Start is called before the first frame update
     void Start()
     {
         GameObject[] nodes = GameObject.FindGameObjectsWithTag("Node");
         float distance = Mathf.Infinity;
-    
+
         foreach(GameObject g in nodes){
             float curdistance = Vector3.Distance(g.transform.position, transform.position);
             if(curdistance<distance){
@@ -32,26 +35,43 @@ public class EnemyPath : MonoBehaviour
                 current = g.GetComponent<Node>();
             }
         }
+
+		dir = current.transform.position - transform.position;
+		dCheck = StartCoroutine(DistanceCheck());
     }
 
     void Update() {
-        
-        Vector3 x = current.transform.position - transform.position;
-        transform.Translate(x.normalized * Time.deltaTime * speed, Space.World);
-        if(Vector3.Distance(current.transform.position, transform.position) < d){ 
+			dir = current.transform.position - transform.position;
+
+        // Vector3 x = current.transform.position - transform.position;
+        transform.Translate(dir.normalized * Time.deltaTime * speed, Space.World);
+
+    }
+
+	IEnumerator DistanceCheck() {
+
+        while (true) {
+
+        if(Vector3.Distance(current.transform.position, transform.position) < d){
             int i = Random.Range(0,current.neighbors.Length);
             if(current.neighbors.Length > 0) {
                 prev = current;
                 current = current.neighbors[i];
             } else {
-                current = prev; 
+                current = prev;
             }
-            
-        };
 
+			dir = current.transform.position - transform.position;
+        }
+
+
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 
-
+	public void stop() {
+		StopCoroutine(dCheck);
+	}
 
 
     /*
@@ -65,7 +85,7 @@ public class EnemyPath : MonoBehaviour
 
 
         //    if(actual + 1 < path.Length && going){
-           // going = true; 
+           // going = true;
         // }
 
         if(actual - 1 < 0 && !going){

@@ -16,7 +16,8 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		transform.Translate(speed * transform.up * Time.deltaTime, Space.World);
+		transform.Translate(speed * transform.forward * Time.deltaTime, Space.World);
+		transform.Rotate(0, 0, speed);
     }
 
 	private void OnTriggerEnter(Collider other) {

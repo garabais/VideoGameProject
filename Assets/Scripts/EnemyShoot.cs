@@ -7,6 +7,7 @@ public class EnemyShoot : MonoBehaviour
 	public GameObject gun;
 	public Transform place;
 	public float delay  = 0.5f;
+	public Animator a;
 
     // Start is called before the first frame update
     void Start()
@@ -21,28 +22,12 @@ public class EnemyShoot : MonoBehaviour
 
 	public IEnumerator Shoot() {
 		while(true) {
-			GameObject g = (GameObject)Instantiate(gun, place.position, place.rotation);
-			SetLayerRecursively(g, 9);
+			a.SetTrigger("Attack");
 			yield return new WaitForSeconds(delay);
 		}
 	}
 
-	void SetLayerRecursively(GameObject obj, int newLayer)
-    {
-        if (null == obj)
-        {
-            return;
-        }
-
-        obj.layer = newLayer;
-
-        foreach (Transform child in obj.transform)
-        {
-            if (null == child)
-            {
-                continue;
-            }
-            SetLayerRecursively(child.gameObject, newLayer);
-        }
-    }
+	public void Hit() {
+			Instantiate(gun, place.position, place.rotation);
+	}
 }

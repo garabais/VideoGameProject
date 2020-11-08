@@ -4,42 +4,43 @@ using UnityEngine;
 
 public class Dash : MonoBehaviour
 {
-	private Rigidbody rb;
+	public Rigidbody rb;
 	private bool dash;
-	private float crDash;
 
 	public float boostSpeed = 2;
-	public float dashTimeout = 0.5f;
-	public float dashTime = 0.1f;
+
+	public Animator a;
 
     // Start is called before the first frame update
     void Start()
     {
-		rb = GetComponent<Rigidbody>();
-		crDash = dashTimeout;
+		dash = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-		if(dashTimeout <= crDash) {
+		if(!dash) {
 			if(Input.GetKeyDown(KeyCode.Space)) {
-				crDash = 0;
-				dash = true;
-			}
-		} else {
-			crDash += Time.deltaTime;
-
-			if(dashTime < crDash) {
-				dash = false;
+				a.SetBool("canAttack", false);
+				a.SetTrigger("Dash");
 			}
 		}
-    }
+	}
 
 	void LateUpdate() {
 		if(dash) {
 			rb.velocity = rb.velocity * boostSpeed;
 		}
     }
+
+	public void startDash() {
+				dash = true;
+	}
+
+	public void endDash() {
+				dash = false;
+				a.SetBool("canAttack", true);
+	}
 
 }

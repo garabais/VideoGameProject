@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class EnemyKill : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+	public Animator a;
+	public int lives = 3;
+	public EnemyPath p;
+	public Aim aim;
+	public EnemyShoot s;
 
 	private void OnTriggerEnter(Collider other) {
-		Destroy(gameObject);
+		lives--;
+		if(lives > 0) {
+			a.SetTrigger("Hit");
+		} else {
+			p.enabled = false;
+			aim.enabled = false;
+			s.enabled = false;
+			// a.SetBool("canShoot", false);
+			a.SetTrigger("Die");
+		}
 	}
+
 }

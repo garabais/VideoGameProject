@@ -4,35 +4,39 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-	public GameObject gun;
-	public Transform place;
-	public int button;
+	public Animator a;
+
+	public GameObject melee, ranged;
+	public Transform mPlace, rPlace;
+	private bool canAttack;
 
     // Update is called once per frame
     void Update()
     {
-		if(Input.GetMouseButtonDown(button)) {
-			GameObject g = (GameObject)Instantiate(gun, place.position, place.rotation);
-			SetLayerRecursively(g,8);
+		// if(a.GetBool("canAttack")){
+		if(Input.GetMouseButtonDown(0)) {
+			a.SetTrigger("rangeAttack");
+			// GameObject g = (GameObject)Instantiate(gun, place.position, place.rotation);
+		} else if (Input.GetMouseButtonDown(1)) {
+			a.SetTrigger("meleeAttack");
+		}
+
+		// }
+	}
+
+	public void Hit(int t) {
+		if(t == 2) {
+			Instantiate(melee, mPlace.position, mPlace.rotation);
+		} else if (t == 1) {
+			Instantiate(ranged, rPlace.position, rPlace.rotation);
 		}
 	}
 
-	void SetLayerRecursively(GameObject obj, int newLayer)
-    {
-        if (null == obj)
-        {
-            return;
-        }
+	public void startAttack() {
+			a.SetBool("canAttack", false);
+	}
 
-        obj.layer = newLayer;
-
-        foreach (Transform child in obj.transform)
-        {
-            if (null == child)
-            {
-                continue;
-            }
-            SetLayerRecursively(child.gameObject, newLayer);
-        }
-    }
+	public void endAttack() {
+			a.SetBool("canAttack", true);
+	}
 }
