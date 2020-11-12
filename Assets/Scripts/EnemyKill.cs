@@ -18,7 +18,7 @@ public class EnemyKill : MonoBehaviour
 			p.enabled = false;
 			aim.enabled = false;
 			s.enabled = false;
-			// a.SetBool("canShoot", false);
+			a.SetBool("canShoot", false);
 			a.SetTrigger("Die");
 		}
 	}

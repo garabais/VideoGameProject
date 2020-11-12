@@ -28,6 +28,7 @@ public class PlayerDie : MonoBehaviour
 		lives--;
 		if(lives > 0) {
 			a.SetTrigger("Hit");
+			a.SetBool("canAttack", true);
 		} else {
 			mov.enabled = false;
 			rot.enabled = false;

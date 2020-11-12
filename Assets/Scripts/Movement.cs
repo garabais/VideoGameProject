@@ -6,10 +6,14 @@ public class Movement : MonoBehaviour {
 
 	public float speed = 7;
 	private Rigidbody rb;
+	private AudioSource audio;
+	private bool move;
+
 
     // Start is called before the first frame update
     void Start() {
 		rb = GetComponent<Rigidbody>();
+		audio = GetComponent<AudioSource>();
 	}
 
     // Update is called once per frame
@@ -33,6 +37,15 @@ public class Movement : MonoBehaviour {
 
 		// Make movement vector
 		Vector3 movement = new Vector3(horizontal,0.0f,vertical);
+
+		if(movement.sqrMagnitude == 0 && move) {
+			move = false;
+			audio.Pause();
+
+		} else if (movement.sqrMagnitude != 0 && !move){
+			move = true;
+			audio.Play();
+		}
 
 		// rb.AddForce(movement * speed);
 		rb.velocity = movement * speed;
