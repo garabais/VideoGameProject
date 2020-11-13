@@ -17,10 +17,10 @@ public class SoundPlayer : MonoBehaviour
     void Start()
     {
 		audio = GetComponent<AudioSource>();
-		if(start.Length > 0){
-			audio.clip = start[Random.Range(0, start.Length)];
-			audio.Play();
-		}
+		// if(start.Length > 0){
+			// audio.clip = start[Random.Range(0, start.Length)];
+			// audio.Play();
+		// }
     }
 
 	public void dashSound(){

@@ -15,7 +15,7 @@ public class RoomSpawner : MonoBehaviour
 	public bool spawned = false;
 
 	private static RoomTemplate templates;
-	private static int rooms = 0;
+	private static int rooms;
 	public static int MAX_ROOMS = 255;
 
     // Start is called before the first frame update
@@ -63,5 +63,9 @@ public class RoomSpawner : MonoBehaviour
 			}
 			spawned = true;
 		}
+	}
+
+	public static void resetRoomCount(){
+		rooms = 0;
 	}
 }
