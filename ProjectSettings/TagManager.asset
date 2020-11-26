@@ -7,6 +7,8 @@ TagManager:
   - Node
   - RoomSpawnPoint
   - Rooms
+  - Spawn
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -21,7 +23,7 @@ TagManager:
   - enemy
   - player
   - RSpawn
-  - 
+  - Entrance
   - 
   - 
   - 

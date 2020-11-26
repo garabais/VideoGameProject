@@ -24,18 +24,20 @@ public class PlayerDie : MonoBehaviour
     }
 
 	private void OnTriggerEnter(Collider other) {
-		// transform.position = new Vector3(0,0.5f,0);
-		lives--;
-		if(lives > 0) {
-			a.SetTrigger("Hit");
-			a.SetBool("canAttack", true);
-		} else {
-			mov.enabled = false;
-			rot.enabled = false;
-			da.enabled = false;
-			at.enabled = false;
-			a.SetTrigger("Die");
+		// If the trigger is an enemy damage
+		if(other.gameObject.layer == 9) {
+			lives--;
+			if(lives > 0) {
+				a.SetTrigger("Hit");
+				a.SetBool("canAttack", true);
+			} else {
+				mov.stop();
+				mov.enabled = false;
+				rot.enabled = false;
+				da.enabled = false;
+				at.enabled = false;
+				a.SetTrigger("Die");
+			}
 		}
-		// print("DIE");
 	}
 }

@@ -10,7 +10,6 @@ public class Aim : MonoBehaviour
     void Start()
     {
 		target = GameObject.FindWithTag("Player").transform;
-		print("");
     }
 
     // Update is called once per frame

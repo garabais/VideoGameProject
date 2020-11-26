@@ -23,7 +23,6 @@ public class EnemyAnimation : MonoBehaviour
     }
 
 	public void hitDie(){
-		print("hello");
 		Destroy(root);
 	}
 }

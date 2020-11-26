@@ -20,6 +20,7 @@ public class EnemyKill : MonoBehaviour
 			s.enabled = false;
 			a.SetBool("canShoot", false);
 			a.SetTrigger("Die");
+			GetComponent<BoxCollider>().enabled = false;
 		}
 	}
 

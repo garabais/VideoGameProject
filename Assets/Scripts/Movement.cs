@@ -51,4 +51,8 @@ public class Movement : MonoBehaviour {
 		rb.velocity = movement * speed;
     }
 
+	public void stop() {
+		rb.velocity = new Vector3(0,0,0);
+	}
+
 }

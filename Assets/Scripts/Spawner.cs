@@ -7,11 +7,12 @@ public class Spawner : MonoBehaviour
 	public GameObject enemy;
 	public int number = 5;
 	public float delay = 5;
+	public float startDelay = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-		StartCoroutine(Spawn());
+		Invoke("startSpawn", startDelay);
     }
 
     // Update is called once per frame
@@ -20,11 +21,16 @@ public class Spawner : MonoBehaviour
 
     }
 
+	void startSpawn() {
+		StartCoroutine(Spawn());
+	}
+
 	public IEnumerator Spawn() {
 		while(number > 0) {
 			Instantiate(enemy, transform.position, enemy.transform.rotation);
 			number--;
 			yield return new WaitForSeconds(delay);
 		}
+		Destroy(gameObject);
 	}
 }
