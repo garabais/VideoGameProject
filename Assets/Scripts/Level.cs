@@ -9,6 +9,7 @@ public class Level : MonoBehaviour
 	public static void next(){
 		level++;
 		RoomSpawner.resetRoomCount();
+		PlayerDie.extraLife();
 		Application.LoadLevel(Application.loadedLevel);
 	}
 
