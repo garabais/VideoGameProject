@@ -16,7 +16,9 @@ public class RoomSpawner : MonoBehaviour
 
 	private static RoomTemplate templates;
 	private static int rooms;
+	private static bool hasBoss = false;
 	public static int MAX_ROOMS = 255;
+	private GameObject room;
 
     // Start is called before the first frame update
     void Start()
@@ -31,25 +33,45 @@ public class RoomSpawner : MonoBehaviour
 	void Spawn(){
 		if(spawned == false){
 			if(rooms > MAX_ROOMS) {
-				print("MAX_ROOMS Reached");
-				Instantiate(templates.emptyRoom, transform.position, Quaternion.identity);
+				room = templates.emptyRoom;
 			}else if(openingDirection == 1){
 				// Need to spawn a room with a BOTTOM door.
 				rand = Random.Range(0, templates.bottomRooms.Length);
-				Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
+				room = templates.bottomRooms[rand];
+				if(!hasBoss && room.tag == "FinalRoom") {
+					hasBoss = true;
+					room = templates.bossB;
+				}
+				// Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
 			} else if(openingDirection == 2){
 				// Need to spawn a room with a TOP door.
 				rand = Random.Range(0, templates.topRooms.Length);
-				Instantiate(templates.topRooms[rand], transform.position, templates.topRooms[rand].transform.rotation);
+				room = templates.topRooms[rand];
+				if(!hasBoss && room.tag == "FinalRoom") {
+					hasBoss = true;
+					room = templates.bossT;
+				}
+				// Instantiate(templates.topRooms[rand], transform.position, templates.topRooms[rand].transform.rotation);
 			} else if(openingDirection == 3){
 				// Need to spawn a room with a LEFT door.
 				rand = Random.Range(0, templates.leftRooms.Length);
-				Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
+				room = templates.leftRooms[rand];
+				if(!hasBoss && room.tag == "FinalRoom") {
+					hasBoss = true;
+					room = templates.bossL;
+				}
+				// Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
 			} else if(openingDirection == 4){
 				// Need to spawn a room with a RIGHT door.
 				rand = Random.Range(0, templates.rightRooms.Length);
-				Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation);
+				room = templates.rightRooms[rand];
+				if(!hasBoss && room.tag == "FinalRoom") {
+					hasBoss = true;
+					room = templates.bossR;
+				}
+				// Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation);
 			}
+			Instantiate(room, transform.position, room.transform.rotation);
 			rooms++;
 			spawned = true;
 		}
@@ -58,7 +80,24 @@ public class RoomSpawner : MonoBehaviour
 	private void OnTriggerEnter(Collider other) {
 		if(other.CompareTag("RoomSpawnPoint")){
 			if(other.GetComponent<RoomSpawner>().spawned == false && spawned == false){
-				Instantiate(templates.emptyRoom, transform.position, Quaternion.identity);
+				if(!hasBoss){
+					if(openingDirection == 1){
+						hasBoss = true;
+						room = templates.bossB;
+					} else if(openingDirection == 2){
+						hasBoss = true;
+						room = templates.bossT;
+					} else if(openingDirection == 3){
+						hasBoss = true;
+						room = templates.bossL;
+					} else if(openingDirection == 4){
+						hasBoss = true;
+						room = templates.bossR;
+					}
+				} else{
+					room = templates.emptyRoom;
+				}
+				Instantiate(room, transform.position, room.transform.rotation);
 				Destroy(gameObject);
 			}
 			spawned = true;
@@ -67,5 +106,6 @@ public class RoomSpawner : MonoBehaviour
 
 	public static void resetRoomCount(){
 		rooms = 0;
+		hasBoss = false;
 	}
 }

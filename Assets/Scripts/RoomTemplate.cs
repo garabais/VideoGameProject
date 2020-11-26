@@ -11,6 +11,11 @@ public class RoomTemplate : MonoBehaviour
 
 	public GameObject emptyRoom;
 
+	public GameObject bossT;
+	public GameObject bossB;
+	public GameObject bossR;
+	public GameObject bossL;
+
     // Start is called before the first frame update
     void Start()
     {
