@@ -10,6 +10,12 @@ public class EnemyKill : MonoBehaviour
 	public Aim aim;
 	public EnemyShoot s;
 
+    // Start is called before the first frame update
+    void Start()
+    {
+		lives *= Level.getLevel();
+    }
+
 	private void OnTriggerEnter(Collider other) {
 		lives--;
 		if(lives > 0) {

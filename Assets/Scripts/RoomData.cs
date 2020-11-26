@@ -7,6 +7,7 @@ public class RoomData : MonoBehaviour
 	public GameObject[] doors;
 	public GameObject[] entrances;
 	public GameObject[] spawners;
+	public GameObject exit;
 
 	public void enter(){
 		foreach(GameObject entrance in entrances) {
@@ -23,6 +24,9 @@ public class RoomData : MonoBehaviour
 			foreach(GameObject door in doors) {
 				Destroy(door);
 			}
+		}
+		if( exit != null ){
+			exit.active = true;
 		}
 	}
 }

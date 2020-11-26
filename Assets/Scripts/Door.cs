@@ -11,11 +11,6 @@ public class Door : MonoBehaviour
 		Invoke("check", .25f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 	void check() {
 		StartCoroutine(selfDestroy());
 	}

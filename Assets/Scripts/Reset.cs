@@ -14,7 +14,8 @@ public class Reset : MonoBehaviour
     {
 		if(Input.GetKeyDown(KeyCode.Space)){
 			RoomSpawner.resetRoomCount();
-			Application.LoadLevel(Application.loadedLevel);
+			Level.resetLevel();
+			Application.LoadLevel("Menu");
 		}
     }
 }
