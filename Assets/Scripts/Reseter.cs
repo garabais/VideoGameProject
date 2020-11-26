@@ -22,7 +22,7 @@ public class Reseter : MonoBehaviour
 		}
 
 		if(Input.GetKeyDown(KeyCode.O)){
-			Application.LoadLevel(otherScene);
+			Application.LoadLevel("Menu");
 		}
     }
 }
