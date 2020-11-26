@@ -31,17 +31,20 @@ public class PlayerDie : MonoBehaviour
 		// If the trigger is an enemy damage
 		if(other.gameObject.layer == 9) {
 			life--;
-			text.text = life.ToString();
-			if(life > 0) {
-				a.SetTrigger("Hit");
-				a.SetBool("canAttack", true);
-			} else {
-				mov.stop();
-				mov.enabled = false;
-				rot.enabled = false;
-				da.enabled = false;
-				at.enabled = false;
-				a.SetTrigger("Die");
+			if(life >= 0){
+				text.text = life.ToString();
+
+				if(life > 0) {
+					a.SetTrigger("Hit");
+					a.SetBool("canAttack", true);
+				} else {
+					mov.stop();
+					mov.enabled = false;
+					rot.enabled = false;
+					da.enabled = false;
+					at.enabled = false;
+					a.SetTrigger("Die");
+				}
 			}
 		}
 	}
