@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 4103941778587062439, guid: 4c1825f11a7b8992389cb56a07640af7, type: 3}
-  number: 5
-  delay: 5
+  number: 3
+  delay: 12
+  startDelay: 0
 --- !u!114 &8627834576748000932
 MonoBehaviour:
   m_ObjectHideFlags: 0

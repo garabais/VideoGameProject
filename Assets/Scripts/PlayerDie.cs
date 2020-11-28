@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerDie : MonoBehaviour
 {
-	public static int lifes = 3;
-	private static int life = 3;
+	public static int lifes = 10;
+	private static int life = 10;
 	public Animator a;
 	public Movement mov;
 	public Rotation rot;
@@ -14,6 +14,7 @@ public class PlayerDie : MonoBehaviour
 	public Attack at;
 	public Text text;
 
+	public GameObject over;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +39,10 @@ public class PlayerDie : MonoBehaviour
 					a.SetTrigger("Hit");
 					a.SetBool("canAttack", true);
 				} else {
+					a.SetBool("alive", false);
+					if(over != null) {
+						over.active = true;
+					}
 					mov.stop();
 					mov.enabled = false;
 					rot.enabled = false;
