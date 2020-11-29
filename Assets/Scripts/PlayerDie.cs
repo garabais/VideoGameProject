@@ -59,7 +59,7 @@ public class PlayerDie : MonoBehaviour
 	}
 
 	public static void extraLife(){
-		life++;
+		life += Level.getLevel();
 	}
 
 

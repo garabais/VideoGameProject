@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyShoot : MonoBehaviour
+public class BossShoot : MonoBehaviour
 {
-	public GameObject gun;
+	public GameObject calmG, angryG;
 	public Transform place;
-	public float delay  = 0.5f;
+	public float calmD  = 1.25f;
+	public float angryD  = 0.5f;
 	public Animator a;
 	private IEnumerator shoot;
+	private GameObject curr;
+	private float delay;
 
     // Start is called before the first frame update
     void Start()
     {
+		curr = calmG;
+		delay = calmD;
 		shoot = Shoot();
 		start();
     }
@@ -25,10 +30,16 @@ public class EnemyShoot : MonoBehaviour
 		StopCoroutine(shoot);
 	}
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
+	public void angry(){
+		curr = angryG;
+		delay = angryD;
+	}
+
+	public void calm(){
+		curr = calmG;
+		delay = calmD;
+	}
+
 
 	public IEnumerator Shoot() {
 		while(true) {
@@ -38,6 +49,6 @@ public class EnemyShoot : MonoBehaviour
 	}
 
 	public void Hit() {
-			Instantiate(gun, place.position, place.rotation);
+			Instantiate(curr, place.position, place.rotation);
 	}
 }

@@ -20,7 +20,8 @@ public class EnemyPath : MonoBehaviour
 	public Vector3 dir;
 
     private Node current;
-	private Coroutine dCheck;
+
+	private bool mov;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,14 +38,16 @@ public class EnemyPath : MonoBehaviour
         }
 
 		dir = current.transform.position - transform.position;
-		dCheck = StartCoroutine(DistanceCheck());
+		StartCoroutine(DistanceCheck());
+		start();
     }
 
     void Update() {
+		if(mov){
 			dir = current.transform.position - transform.position;
-
-        // Vector3 x = current.transform.position - transform.position;
-        transform.Translate(dir.normalized * Time.deltaTime * speed, Space.World);
+			// Vector3 x = current.transform.position - transform.position;
+			transform.Translate(dir.normalized * Time.deltaTime * speed, Space.World);
+		}
 
     }
 
@@ -70,7 +73,11 @@ public class EnemyPath : MonoBehaviour
     }
 
 	public void stop() {
-		StopCoroutine(dCheck);
+		mov = false;
+	}
+
+	public void start() {
+		mov = true;
 	}
 
 
