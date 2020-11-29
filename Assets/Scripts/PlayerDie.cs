@@ -13,24 +13,28 @@ public class PlayerDie : MonoBehaviour
 	public Dash da;
 	public Attack at;
 	public Text text;
+	public bool hit;
 
 	public GameObject over;
     // Start is called before the first frame update
     void Start()
     {
+		hit = true;
 		text = GameObject.Find("HP").GetComponent<Text>();
 		text.text = life.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
+	private void hitAllow(){
+		hit = true;
+	}
 
 	private void OnTriggerEnter(Collider other) {
 		// If the trigger is an enemy damage
-		if(other.gameObject.layer == 9) {
+		if(other.gameObject.layer == 9 && hit) {
+			hit = false;
+
+			Invoke("hitAllow", 0.5f);
 			life--;
 			if(life >= 0){
 				text.text = life.ToString();
@@ -50,6 +54,7 @@ public class PlayerDie : MonoBehaviour
 					at.enabled = false;
 					a.SetTrigger("Die");
 				}
+
 			}
 		}
 	}
