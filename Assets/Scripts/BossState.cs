@@ -38,25 +38,32 @@ public class BossState : MonoBehaviour
 			mov.start();
 			rotat.enabled = true;
 			a.SetTrigger("Mov");
-		} else if(state == 3){
-			light.active = false;
-			shooter.calm();
+			state = 1;
+			shooter.start();
+			Invoke("getTired", calmDelay);
 		}
-		state = 1;
-		shooter.start();
-		Invoke("getTired", calmDelay);
+	}
+
+	private void angryCalm(){
+			light.active = false;
+			shooter.stop();
+			shooter.calm();
+			state = 1;
+			shooter.start();
+			Invoke("getTired", calmDelay);
 	}
 
 	private void getAngry(){
 		if(state == 2) {
 			state = 3;
+			shooter.stop();
 			shooter.angry();
 			shooter.start();
 			mov.start();
 			rotat.enabled = true;
 			light.active = true;
-			a.SetTrigger("Mov");
-			Invoke("getCalm", calmDelay * 2 / 3 + Level.getLevel());
+			// a.SetTrigger("Mov");
+			Invoke("angryCalm", calmDelay);
 		}
 	}
 
