@@ -108,8 +108,11 @@ MonoBehaviour:
   light: {fileID: 501749979}
   mov: {fileID: 7060967403087266857}
   rotat: {fileID: 6818475422188019693}
+  live: {fileID: 0}
+  pos: []
+  enemy: {fileID: 0}
   calmDelay: 10
-  tiredDelay: 5
+  tiredDelay: 10
   a: {fileID: 1159119899140711715}
 --- !u!114 &8891001001858302393
 MonoBehaviour:

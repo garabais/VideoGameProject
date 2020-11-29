@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerDie : MonoBehaviour
 {
-	public static int lifes = 100;
-	private static int life = 100;
+	public static int lifes = 10;
+	private static int life = 10;
 	public Animator a;
 	public Movement mov;
 	public Rotation rot;

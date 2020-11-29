@@ -9,6 +9,7 @@ public class EnemyKill : MonoBehaviour
 	public EnemyPath p;
 	public Aim aim;
 	public EnemyShoot s;
+	private bool vul;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +18,11 @@ public class EnemyKill : MonoBehaviour
     }
 
 	private void OnTriggerEnter(Collider other) {
-		lives--;
+		if(vul){
+			lives -= 2;
+		} else {
+			lives--;
+		}
 		if(lives > 0) {
 			a.SetTrigger("Hit");
 		} else {
@@ -28,6 +33,23 @@ public class EnemyKill : MonoBehaviour
 			a.SetTrigger("Die");
 			GetComponent<BoxCollider>().enabled = false;
 		}
+	}
+
+	public void recover(){
+		int l = Level.getLevel();
+		if(l < 10) {
+			lives += l;
+		} else {
+			lives += 10;
+		}
+	}
+
+	public void vulnerable(){
+		vul = true;
+	}
+
+	public void normal(){
+		vul = false;
 	}
 
 }
