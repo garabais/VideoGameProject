@@ -18,6 +18,8 @@ public class Menu : MonoBehaviour
 			Level.resetLevel();
 			PlayerDie.resetLifes();
 			Application.LoadLevel("Level");
+		} else if(Input.GetKeyDown(KeyCode.Escape)){
+			Application.Quit();
 		}
     }
 

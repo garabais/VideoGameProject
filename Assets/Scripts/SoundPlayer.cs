@@ -29,8 +29,8 @@ public class SoundPlayer : MonoBehaviour
 	}
 
 	public void hitSound(){
-		audio.clip = hit[Random.Range(0, hit.Length)];
-		audio.Play();
+		// audio.clip = hit[Random.Range(0, hit.Length)];
+		// audio.Play();
 	}
 
 	public void attackSound(){

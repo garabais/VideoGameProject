@@ -16,12 +16,9 @@ public class Reseter : MonoBehaviour
     void Update()
     {
 
-		RoomSpawner.resetRoomCount();
-		if(Input.GetKeyDown(KeyCode.P)){
-			Application.LoadLevel(Application.loadedLevel);
-		}
-
-		if(Input.GetKeyDown(KeyCode.O)){
+		if(Input.GetKeyDown(KeyCode.Escape)){
+			RoomSpawner.resetRoomCount();
+			Level.resetLevel();
 			Application.LoadLevel("Menu");
 		}
     }

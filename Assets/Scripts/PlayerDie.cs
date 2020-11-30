@@ -12,8 +12,10 @@ public class PlayerDie : MonoBehaviour
 	public Rotation rot;
 	public Dash da;
 	public Attack at;
-	public Text text;
+	private Text text;
 	public bool hit;
+	public AudioSource audio;
+	public AudioClip[] dieS;
 
 	public GameObject over;
     // Start is called before the first frame update
@@ -24,6 +26,16 @@ public class PlayerDie : MonoBehaviour
 		text.text = life.ToString();
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+		if(Application.isEditor){
+			if(Input.GetKey(KeyCode.Q)) {
+				life += 5;
+				text.text = life.ToString();
+			}
+		}
+    }
 
 	private void hitAllow(){
 		hit = true;
@@ -36,6 +48,8 @@ public class PlayerDie : MonoBehaviour
 
 			Invoke("hitAllow", 0.5f);
 			life--;
+			audio.clip = dieS[Random.Range(0, dieS.Length)];
+			audio.Play();
 			if(life >= 0){
 				text.text = life.ToString();
 
